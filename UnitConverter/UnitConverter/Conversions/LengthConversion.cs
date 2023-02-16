@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace UnitConverter.Conversions
 {
-    internal class LengthConversion
+    public class LengthConversion
     {
-        public readonly Dictionary<string, double> toMeterConversions = new Dictionary<string, double>();
-        public readonly Dictionary<string, string> units = new Dictionary<string, string>();
+        private Dictionary<string, double> toMeterConversions = new Dictionary<string, double>();
+        private Dictionary<string, string> units = new Dictionary<string, string>();
 
         public LengthConversion()
         {
@@ -45,12 +45,14 @@ namespace UnitConverter.Conversions
 
         public double convertValue(double value, string startUnit, string convertedUnit)
         {
-            return this.toMeterConversions[startUnit] * value / this.toMeterConversions[convertedUnit];
+            return this.toMeterConversions[units[startUnit]] * value / this.toMeterConversions[units[convertedUnit]];
         }
 
         public Dictionary<string, string> GetUnits()
         {
             return this.units;
         }
+
+        
     }
 }

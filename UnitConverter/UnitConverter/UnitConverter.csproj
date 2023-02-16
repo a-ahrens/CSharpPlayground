@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conversions\AreaConversion.cs" />
     <Compile Include="Conversions\LengthConversion.cs" />
+    <Compile Include="Conversions\VolumeConversion.cs" />
     <Compile Include="Converter.cs" />
     <Compile Include="Conversions\TempConversion.cs" />
     <Compile Include="Program.cs" />
