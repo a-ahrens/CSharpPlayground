@@ -11,8 +11,8 @@ namespace UnitConverter
     {
         static void Main(string[] args)
         {
-            Convertor convertor = new Convertor();
-            convertor.RunConvertor();
+            Converter convertor = new Converter();
+            convertor.RunConverter();
 
         }
     }

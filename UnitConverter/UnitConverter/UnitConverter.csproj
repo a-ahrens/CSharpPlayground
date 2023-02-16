@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conversions\LengthConversion.cs" />
-    <Compile Include="Convertor.cs" />
+    <Compile Include="Converter.cs" />
     <Compile Include="Conversions\TempConversion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

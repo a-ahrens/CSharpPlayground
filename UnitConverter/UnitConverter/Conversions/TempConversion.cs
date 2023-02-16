@@ -8,8 +8,8 @@ namespace UnitConverter.Conversions
 {
     public class TempConversion
     {
-        public readonly Dictionary<string, Func<double, double>> conversions = new Dictionary<string, Func<double, double>>();
-        public readonly Dictionary<string, string> units = new Dictionary<string,string>();
+        private Dictionary<string, Func<double, double>> conversions = new Dictionary<string, Func<double, double>>();
+        private Dictionary<string, string> units = new Dictionary<string, string>();
 
         public TempConversion()
         {
@@ -30,6 +30,11 @@ namespace UnitConverter.Conversions
         public double convertValue(double value, string startUnit, string convertedUnit)
         {
             return this.conversions[$"{startUnit}to{convertedUnit}"](value);
+        }
+
+        public Dictionary<string,string> GetUnits()
+        {
+            return this.units;
         }
 
         private double FahrenheitToCelsius(double temperature)

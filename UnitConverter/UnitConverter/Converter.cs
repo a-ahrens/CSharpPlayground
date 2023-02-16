@@ -7,7 +7,7 @@ using UnitConverter.Conversions;
 
 namespace UnitConverter
 {
-    internal class Convertor
+    internal class Converter
     {
 
         TempConversion tempConversion = new TempConversion();
@@ -21,7 +21,7 @@ namespace UnitConverter
         private string[] conversionOptions = new string[] { "Temperature", "Length", "Volume", "Area" };
 
 
-        public void RunConvertor()
+        public void RunConverter()
         {
             //Print the available conversion types and have user pick one
             Console.WriteLine("Please choose a conversion option: ");
@@ -40,32 +40,27 @@ namespace UnitConverter
             if(conversionType == "Temperature")
             {
                 Console.WriteLine("Temperature Conversion Options:");
-                foreach (KeyValuePair<string, string> tempPair in tempConversion.units)
-                {
-                    Console.WriteLine($"{tempPair.Key} for {tempPair.Value}");
-                }
-                UserInput();
+                UserInput(tempConversion.GetUnits());
                 convertedValue = tempConversion.convertValue(startingValue, startingUnit, convertedUnit);
             }
             else if(conversionType == "Length")
             {
                 Console.WriteLine("Length Conversion Options:");
-                foreach (KeyValuePair<string, string> lengthPair in lengthConversion.units)
-                {
-                    Console.WriteLine($"{lengthPair.Key} for {lengthPair.Value}");
-                }
-                UserInput();
-                //convertedValue = lengthConversion.convertValue(startingValue, startingUnit, convertedUnit);
+                UserInput(lengthConversion.GetUnits());
+                convertedValue = lengthConversion.convertValue(startingValue, lengthConversion.units[startingUnit], lengthConversion.units[convertedUnit]);
             }
 
-
-/*          
-            Console.WriteLine($"{startingValue}{startingUnit} ==> {convertedValue}{convertedUnit}");*/
+            Console.WriteLine($"{startingValue}{startingUnit} ==> {convertedValue}{convertedUnit}");
 
         }
 
-        private void UserInput()
+        private void UserInput(Dictionary<string,string> units)
         {
+            foreach (KeyValuePair<string, string> unitPair in units)
+            {
+                Console.WriteLine($"{unitPair.Key} for {unitPair.Value}");
+            }
+
             Console.WriteLine("Please select a unit to convert from: ");
             startingUnit = Console.ReadLine();
 
