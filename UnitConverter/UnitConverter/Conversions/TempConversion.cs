@@ -29,7 +29,9 @@ namespace UnitConverter.Conversions
 
         public double convertValue(double value, string startUnit, string convertedUnit)
         {
-            return this.conversions[$"{startUnit}to{convertedUnit}"](value);
+            double convertedValue = this.conversions[$"{startUnit}to{convertedUnit}"](value);
+
+            return Math.Round((Double)convertedValue, 4);
         }
 
         public Dictionary<string,string> GetUnits()
