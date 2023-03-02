@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conversions\Conversion.cs" />
     <Compile Include="UserInput.cs" />
     <Compile Include="Conversions\AreaConversion.cs" />
     <Compile Include="Conversions\LengthConversion.cs" />

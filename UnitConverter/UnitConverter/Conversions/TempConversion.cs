@@ -6,42 +6,34 @@ using System.Threading.Tasks;
 
 namespace UnitConverter.Conversions
 {
-    public class TempConversion
+    public class TempConversion : Conversion
     {
         private Dictionary<string, Func<double, double>> conversions = new Dictionary<string, Func<double, double>>();
-        private Dictionary<string, string> units = new Dictionary<string, string>();
 
         public TempConversion()
         {
             //load temperature unit options
-            this.units.Add("F", "Fahrenheit");
-            this.units.Add("C", "Celsius");
-            this.units.Add("K", "Kelvin");
+            units.Add("F", "Fahrenheit");
+            units.Add("C", "Celsius");
+            units.Add("K", "Kelvin");
 
             //load conversion functions
-            this.conversions.Add("FtoC", FahrenheitToCelsius);
-            this.conversions.Add("FtoK", FahrenheitToKelvin);
-            this.conversions.Add("CtoF", CelsiusToFahrenheit);
-            this.conversions.Add("CtoK", CelsiusToKelvin);
-            this.conversions.Add("KtoF", KelvinToFahrenheit);
-            this.conversions.Add("KtoC", KelvinToCelsius);
+            conversions.Add("FtoC", FahrenheitToCelsius);
+            conversions.Add("FtoK", FahrenheitToKelvin);
+            conversions.Add("CtoF", CelsiusToFahrenheit);
+            conversions.Add("CtoK", CelsiusToKelvin);
+            conversions.Add("KtoF", KelvinToFahrenheit);
+            conversions.Add("KtoC", KelvinToCelsius);
         }
 
-        public double convertValue(double value, string startUnit, string convertedUnit)
+        public override double ConvertValue(double value, string startUnit, string convertedUnit)
         {
             if(startUnit == convertedUnit)
             {
                 return value;
             }
 
-            double convertedValue = this.conversions[$"{startUnit}to{convertedUnit}"](value);
-
-            return Math.Round((Double)convertedValue, 4);
-        }
-
-        public Dictionary<string,string> GetUnits()
-        {
-            return this.units;
+           return this.conversions[$"{startUnit}to{convertedUnit}"](value);
         }
 
         private double FahrenheitToCelsius(double temperature)

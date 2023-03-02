@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnitConverter.Conversions;
 
 namespace UnitConverter
 {
@@ -34,8 +35,7 @@ namespace UnitConverter
 
             return option;
         }
-
-        public string InputUnits(Dictionary<string,string> units, string fromToStr)
+        public string InputUnits(Conversion conversion, string fromToStr)
         {
             string inputUnit = "";
 
@@ -43,7 +43,7 @@ namespace UnitConverter
             {
                 Console.Write($"Please select a unit to convert {fromToStr}: ");
                 inputUnit = Console.ReadLine();
-                if (!units.ContainsKey(inputUnit))
+                if (!conversion.GetUnits().ContainsKey(inputUnit))
                 {
                     Console.WriteLine("\t!!! Not a valid unit type !!!");
                 }
@@ -78,5 +78,9 @@ namespace UnitConverter
 
 
         }
+
+
+
+
     }
 }

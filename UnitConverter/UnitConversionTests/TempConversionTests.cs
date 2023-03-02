@@ -18,7 +18,7 @@ namespace UnitConversionTests
             double initialValue = input;
 
             //act
-            double actualValue = testConvert.convertValue(initialValue, "F", "C");
+            double actualValue = testConvert.ConvertValue(initialValue, "F", "C");
 
             //assert
             Assert.AreEqual(expected, actualValue);
