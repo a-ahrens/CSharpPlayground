@@ -40,6 +40,11 @@ namespace UnitConverter.Conversions
 
         public double convertValue(double value, string startUnit, string convertedUnit)
         {
+            if (startUnit == convertedUnit)
+            {
+                return value;
+            }
+
             return this.toCubicMeterConversions[units[startUnit]] * value / this.toCubicMeterConversions[units[convertedUnit]];
         }
 

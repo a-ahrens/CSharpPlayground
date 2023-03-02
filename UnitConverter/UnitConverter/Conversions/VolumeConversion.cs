@@ -62,6 +62,10 @@ namespace UnitConverter.Conversions
 
         public double convertValue(double value, string startUnit, string convertedUnit)
         {
+            if (startUnit == convertedUnit)
+            {
+                return value;
+            }
             return this.toLiterConversions[units[startUnit]] * value / this.toLiterConversions[units[convertedUnit]];
         }
 

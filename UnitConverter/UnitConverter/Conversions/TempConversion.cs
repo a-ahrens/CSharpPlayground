@@ -29,6 +29,11 @@ namespace UnitConverter.Conversions
 
         public double convertValue(double value, string startUnit, string convertedUnit)
         {
+            if(startUnit == convertedUnit)
+            {
+                return value;
+            }
+
             double convertedValue = this.conversions[$"{startUnit}to{convertedUnit}"](value);
 
             return Math.Round((Double)convertedValue, 4);

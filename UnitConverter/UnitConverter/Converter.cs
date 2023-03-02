@@ -9,6 +9,8 @@ namespace UnitConverter
 {
     internal class Converter
     {
+        UserInput input = new UserInput();
+        UserOutput output = new UserOutput();
         AreaConversion areaConversion = new AreaConversion();
         LengthConversion lengthConversion = new LengthConversion();
         TempConversion tempConversion = new TempConversion();
@@ -18,54 +20,63 @@ namespace UnitConverter
         private double startingValue;
         private string convertedUnit;
         private double convertedValue;
-        private string useConverter;
 
         private string[] conversionOptions = new string[] { "Temperature", "Length", "Volume", "Area" };
 
 
         public void RunConverter()
         {
+            string useConverter = "N";
+
             //Confirm the user wants to use the app
-            Console.Write("Welcome to My Conversion App! \n\n Would you like to convert some measurements? Y/N: ");
+            Console.Write("Welcome to My Conversion App! \n\n Would you like to convert some measurements? \n" +
+                          "Enter Y or y for yes. Enter any other key for No. ");
+            
             useConverter = Console.ReadLine();
 
             while (useConverter == "Y" || useConverter == "y")
             {
-                Console.WriteLine("\nSplendid! Here are your unit conversion options: ");
-                //Print the available conversion types and have user pick one
-                for (int i = 0; i < conversionOptions.Length; i++)
-                {
-                    Console.WriteLine($"\t{i + 1}) {conversionOptions[i]}");
-                }
-
-                Console.Write("\nPlease enter a conversion option number: ");
-                int option = int.Parse(Console.ReadLine());
+                //display conversion options
+                output.DisplayConversionMenu(conversionOptions);
+                
+                //obtain user input for conversion option
+                int option = input.InputConversionType(conversionOptions.Length);
                 string conversionType = conversionOptions[option - 1];
 
                 Console.WriteLine($"\nOption #{option} it is! Let's convert some {conversionType}s! \n");
+                Console.WriteLine($"{conversionType} Coversion Options:");
+
 
                 if (conversionType == "Temperature")
                 {
-                    Console.WriteLine("Temperature Conversion Options:");
-                    UserInput(tempConversion.GetUnits());
+                    output.DisplayUnitTypes(tempConversion.GetUnits());
+                    startingUnit = input.InputUnits(tempConversion.GetUnits(), "from");
+                    convertedUnit = input.InputUnits(tempConversion.GetUnits(), "to");
+                    startingValue = input.InputValue();
                     convertedValue = tempConversion.convertValue(startingValue, startingUnit, convertedUnit);
                 }
                 else if (conversionType == "Length")
                 {
-                    Console.WriteLine("Length Conversion Options:");
-                    UserInput(lengthConversion.GetUnits());
+                    output.DisplayUnitTypes(lengthConversion.GetUnits());
+                    startingUnit = input.InputUnits(lengthConversion.GetUnits(), "from");
+                    convertedUnit = input.InputUnits(lengthConversion.GetUnits(), "to");
+                    startingValue = input.InputValue();
                     convertedValue = lengthConversion.convertValue(startingValue, startingUnit, convertedUnit);
                 }
                 else if (conversionType == "Volume")
                 {
-                    Console.WriteLine("Volume Conversion Options");
-                    UserInput(volumeConversion.GetUnits());
+                    output.DisplayUnitTypes(volumeConversion.GetUnits());
+                    startingUnit = input.InputUnits(volumeConversion.GetUnits(), "from");
+                    convertedUnit = input.InputUnits(volumeConversion.GetUnits(), "to");
+                    startingValue = input.InputValue();
                     convertedValue = volumeConversion.convertValue(startingValue, startingUnit, convertedUnit);
                 }
                 else if (conversionType == "Area")
                 {
-                    Console.WriteLine("Area Conversion Options:");
-                    UserInput(areaConversion.GetUnits());
+                    output.DisplayUnitTypes(areaConversion.GetUnits());
+                    startingUnit = input.InputUnits(areaConversion.GetUnits(), "from");
+                    convertedUnit = input.InputUnits(areaConversion.GetUnits(), "to");
+                    startingValue = input.InputValue();
                     convertedValue = areaConversion.convertValue(startingValue, startingUnit, convertedUnit);
                 }
 
@@ -78,25 +89,6 @@ namespace UnitConverter
             }
 
             Console.WriteLine("\n\n\tThanks for using the Unit Converter 5000! Goodbye\n");
-        }
-
-        private void UserInput(Dictionary<string,string> units)
-        {
-            foreach (KeyValuePair<string, string> unitPair in units)
-            {
-                Console.WriteLine($"\t{unitPair.Key} for {unitPair.Value}");
-            }
-
-            Console.WriteLine();
-            Console.Write("Please select a unit to convert from: ");
-            startingUnit = Console.ReadLine();
-
-            Console.Write("Please select a unit to convert to: ");
-            convertedUnit = Console.ReadLine();
-
-            Console.Write("Please enter a value: ");
-            startingValue = double.Parse(Console.ReadLine());
-
         }
 
     }
