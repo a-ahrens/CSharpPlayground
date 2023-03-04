@@ -17,7 +17,7 @@ namespace UnitConverter.Conversions
             units.Add("SqM", "Square Meter");
             units.Add("SqMi", "Square Mile");
             units.Add("SqY", "Square Yard");
-            units.Add("SqFt", "Square Foot");
+            units.Add("SqF", "Square Foot");
             units.Add("SqIn", "Square Inch");
             units.Add("Ha", "Hectare");
             units.Add("Ac", "Acre");

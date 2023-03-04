@@ -6,7 +6,7 @@ namespace UnitConversionTests
     [TestClass]
     public class TempConversionTests
     {
-        TempConversion testConvert = new TempConversion();
+        Conversion temp = new TempConversion();
 
         [DataTestMethod]
         [DataRow(0.0, -17.7778)]
@@ -18,7 +18,7 @@ namespace UnitConversionTests
             double initialValue = input;
 
             //act
-            double actualValue = testConvert.ConvertValue(initialValue, "F", "C");
+            double actualValue = temp.ConvertValue(initialValue, "F", "C");
 
             //assert
             Assert.AreEqual(expected, actualValue);

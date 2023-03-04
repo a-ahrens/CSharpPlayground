@@ -1,0 +1,5 @@
+ConversionType,StartingValue,StartingUnits,ConvertedUnits
+Temperature,32,F,C
+Length,12,In,F
+Volume,1728,CuF,CuIn
+Area,144,SqIn,SqF

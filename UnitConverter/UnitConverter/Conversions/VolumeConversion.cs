@@ -22,7 +22,7 @@ namespace UnitConverter.Conversions
             units.Add("USTsp", "US Teaspoon");
             units.Add("CuM", "Cubic Meter");
             units.Add("CuF", "Cubic Foot");
-            units.Add("CuI", "Cubic Inch");
+            units.Add("CuIn", "Cubic Inch");
             units.Add("L", "Liter");
             units.Add("Ml", "Milliliter");
             units.Add("IGal", "Imperial Gallon");
