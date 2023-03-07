@@ -31,7 +31,7 @@ namespace UnitConverter.Conversions
             toMeterConversions.Add("Inch", 0.0254);
             toMeterConversions.Add("Foot", 0.3048);
             toMeterConversions.Add("Yard", 0.9144);
-            toMeterConversions.Add("Mile", 1609.34);
+            toMeterConversions.Add("Mile", 1609.344);
             toMeterConversions.Add("Nautical Mile", 1852.0);
             toMeterConversions.Add("Nanometer",  0.000000001);
             toMeterConversions.Add("Micrometer", 0.000001);
@@ -39,7 +39,6 @@ namespace UnitConverter.Conversions
             toMeterConversions.Add("Centimeter", 0.01);
             toMeterConversions.Add("Meter",      1.0);
             toMeterConversions.Add("Kilometer" , 1000.0);
-
         }
 
         public override double ConvertValue(double value, string startUnit, string convertedUnit)
@@ -49,7 +48,7 @@ namespace UnitConverter.Conversions
                 return value;
             }
 
-            return this.toMeterConversions[units[startUnit]] * value / this.toMeterConversions[units[convertedUnit]];
+            return Math.Round(this.toMeterConversions[units[startUnit]] * value / this.toMeterConversions[units[convertedUnit]], 6);
         }
 
 

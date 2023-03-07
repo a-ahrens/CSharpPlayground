@@ -28,12 +28,12 @@ namespace UnitConverter.Conversions
             //then divide by number to get to desired unit
             toCubicMeterConversions.Add("Square Kilometer", 1000000.00);
             toCubicMeterConversions.Add("Square Meter", 1.0);
-            toCubicMeterConversions.Add("Square Mile", 2590000);
-            toCubicMeterConversions.Add("Square Yard", 0.836127);
-            toCubicMeterConversions.Add("Square Foot", 0.092903);
+            toCubicMeterConversions.Add("Square Mile", 2589988.1103);
+            toCubicMeterConversions.Add("Square Yard", 0.83612736);
+            toCubicMeterConversions.Add("Square Foot", 0.09290304);
             toCubicMeterConversions.Add("Square Inch", 0.00064516);
             toCubicMeterConversions.Add("Hectare", 1000.0);
-            toCubicMeterConversions.Add("Acre", 4046.86);
+            toCubicMeterConversions.Add("Acre", 4046.8564224);
 
         }
 
@@ -44,7 +44,7 @@ namespace UnitConverter.Conversions
                 return value;
             }
 
-            return this.toCubicMeterConversions[units[startUnit]] * value / this.toCubicMeterConversions[units[convertedUnit]];
+            return Math.Round(this.toCubicMeterConversions[units[startUnit]] * value / this.toCubicMeterConversions[units[convertedUnit]], 6);
         }
 
     }

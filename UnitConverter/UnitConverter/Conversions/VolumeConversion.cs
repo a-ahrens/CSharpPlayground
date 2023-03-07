@@ -36,25 +36,25 @@ namespace UnitConverter.Conversions
             //load conversion functions unit to liter
             //multiply by value to get to liters
             //then divide by number to get to desired unit
-            toLiterConversions.Add("US Gallon", 3.78541);
-            toLiterConversions.Add("US Quart", 0.946353);
-            toLiterConversions.Add("US Pint", 0.473176);
-            toLiterConversions.Add("US Cup", 0.24);
-            toLiterConversions.Add("US Fluid Ounce", 0.0295735);
-            toLiterConversions.Add("US Tablespoon", 0.0147868);
-            toLiterConversions.Add("US Teaspoon", 0.00492892);
+            toLiterConversions.Add("US Gallon", 3.785411784);
+            toLiterConversions.Add("US Quart", 0.946352946);
+            toLiterConversions.Add("US Pint", 0.473176473);
+            toLiterConversions.Add("US Cup", 0.2365882365);
+            toLiterConversions.Add("US Fluid Ounce", 0.0295735296);
+            toLiterConversions.Add("US Tablespoon", 0.0147867648);
+            toLiterConversions.Add("US Teaspoon", 0.0049289216);
             toLiterConversions.Add("Cubic Meter", 1000.00);
-            toLiterConversions.Add("Cubic Foot", 28.3168);
-            toLiterConversions.Add("Cubic Inch", 0.0163871);
+            toLiterConversions.Add("Cubic Foot", 28.316846592);
+            toLiterConversions.Add("Cubic Inch", 0.016387064);
             toLiterConversions.Add("Liter", 1.0);
             toLiterConversions.Add("Milliliter", 0.001);
             toLiterConversions.Add("Imperial Gallon", 4.54609);
-            toLiterConversions.Add("Imperial Quart", 1.13652);
-            toLiterConversions.Add("Imperial Pint", 0.568261);
-            toLiterConversions.Add("Imperial Cup", 0.284131);
-            toLiterConversions.Add("Imperial Fluid Ounce", 0.0284131);
-            toLiterConversions.Add("Imperial Tablespoon", 0.0177582);
-            toLiterConversions.Add("Imperial Teaspoon", 0.00591939);
+            toLiterConversions.Add("Imperial Quart", 1.1365225);
+            toLiterConversions.Add("Imperial Pint", 0.56826125);
+            toLiterConversions.Add("Imperial Cup", 0.284130625);
+            toLiterConversions.Add("Imperial Fluid Ounce", 0.0284130625);
+            toLiterConversions.Add("Imperial Tablespoon", 0.0177581641);
+            toLiterConversions.Add("Imperial Teaspoon", 0.005919388);
 
         }
 
@@ -64,7 +64,7 @@ namespace UnitConverter.Conversions
             {
                 return value;
             }
-            return this.toLiterConversions[units[startUnit]] * value / this.toLiterConversions[units[convertedUnit]];
+            return Math.Round(this.toLiterConversions[units[startUnit]] * value / this.toLiterConversions[units[convertedUnit]], 6);
         }
     
     }

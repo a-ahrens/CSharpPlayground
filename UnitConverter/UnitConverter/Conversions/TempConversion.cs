@@ -33,7 +33,7 @@ namespace UnitConverter.Conversions
                 return value;
             }
 
-           return this.conversions[$"{startUnit}to{convertedUnit}"](value);
+           return Math.Round(this.conversions[$"{startUnit}to{convertedUnit}"](value), 6);
         }
 
         private double FahrenheitToCelsius(double temperature)
